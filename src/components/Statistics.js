@@ -22,12 +22,17 @@ class Statistics extends Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
+        <a className="row" href="/"> Back to main page </a>
         {this.state.urls.map( url => {
           return (
-            <div className="single-url" key={url.id}>
-              <a href={url.short_url}> {'localhost:3000/' + url.short_url}</a>
-              <p>amount of redirects: {url.visits_count}</p>
+            <div className="row" key={url.id}>
+              <div className="url">
+                <a href={url.short_url}> {'localhost:3000/' + url.short_url}</a>
+              </div>
+              <div className="redirects">
+                <p>amount of redirects: {url.visits_count}</p>
+              </div>
             </div>
           )
         })}

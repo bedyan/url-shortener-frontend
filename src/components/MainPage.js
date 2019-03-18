@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import {CopyToClipboard} from 'react-copy-to-clipboard';
 
 class MainPage extends Component {
   constructor(props) {
@@ -29,13 +30,23 @@ class MainPage extends Component {
 
   render() {
     return (
-      <div>
-        <input default={this.state.full_url}
-          type = "text"
-          placeholder = "Enter your url here"
-          onChange={this.handleChange} />
-        <button onClick={this.addNewUrl}> Short URL! </button>
-        <input type = "text" value={this.state.short_url} />
+      <div className="container">
+        <div className="row">
+            <input default={this.state.full_url}
+              type = "text"
+              placeholder = "Enter your url here"
+              onChange={this.handleChange} />
+            <button className="btn btn-primary btn-sm" onClick={this.addNewUrl}>Short URL</button>
+        </div>
+        <div className="row">
+          <input type = "text" value={this.state.short_url} />
+          <CopyToClipboard text={this.state.short_url}>
+            <button className="btn btn-success btn-sm ">Copy link</button>
+          </CopyToClipboard>
+        </div>
+        <div className="row">
+          <a href="/stats"> Visit statistics about all urls</a>
+        </div>
       </div>
     )
   }
